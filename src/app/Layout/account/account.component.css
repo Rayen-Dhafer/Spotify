@@ -1,0 +1,39 @@
+
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.profile-container {
+  background-color: #181818;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  top: -100px;
+}
+.profile-image img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+.profile-info {
+  margin-top: 15px;
+}
+.profile-info h2 {
+  font-size: 1.5rem;
+}
+.profile-info a {
+  color: #1DB954;
+  text-decoration: none;
+}
+.profile-info a:hover {
+  text-decoration: underline;
+}

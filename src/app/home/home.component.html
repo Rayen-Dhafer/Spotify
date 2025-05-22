@@ -1,0 +1,89 @@
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<body>
+  
+  <header class="header">
+    <div class="header-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify Logo">
+    </div>
+    
+    <div class="house" [routerLink]="['/home/all']" (click)="changecategory(0)">
+      <i class="bi bi-house"></i>
+    </div>
+    
+
+    <div class="search-bar">
+      <i class="bi bi-search" (click)="search()" ></i>
+      <input type="text" placeholder="Que souhaitez-vous écouter?" [(ngModel)]="searchQuery"  (keydown.enter)="search()"  (blur)="search()">
+      <i class="bi bi-x" (click)="clearsearch()" ></i>
+    </div>
+    
+ 
+    <div class="user-info dropdown">
+      &nbsp;
+      <img src={{this.user.userData.images[0].url}} alt="User Avatar">   
+      <span>{{this.user.userData.display_name}}</span>    
+      &nbsp;
+
+      <div class="dropdown-content">
+        <a [routerLink]="['/home/account']">
+          <i class="bi bi-person"></i>&nbsp;&nbsp; Account
+        </a>
+        <a [routerLink]="['/home/favorites']">
+          <i class="bi bi-heart"></i>&nbsp;&nbsp; Favorites
+        </a>
+        <a [routerLink]="['/home/aboutUs']">
+          <i class="bi bi-info-circle"></i>&nbsp;&nbsp; About us
+        </a>
+        <a (click)="auth.logout()">
+          <i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp; Logout
+        </a>
+      </div>
+      
+    </div>
+  </header>
+<br>
+  <div class="container" *ngIf="showContainer">
+ 
+    <div class="category-buttons mt-3">
+      <button class={{MyClass[0]}} (click)="changecategory(0)" [routerLink]="['/home/all']" >Tout</button>
+      <button class={{MyClass[1]}} (click)="changecategory(1)" [routerLink]="['/home/musiques']">Musiques</button>
+      <button class={{MyClass[2]}} (click)="changecategory(2)" [routerLink]="['/home/playlists']">Playlists</button>
+      <button class={{MyClass[3]}} (click)="changecategory(3)" [routerLink]="['/home/albums']">Albums</button>
+      <button class={{MyClass[4]}} (click)="changecategory(4)" [routerLink]="['/home/artists']">Artistes</button>
+      <button class={{MyClass[5]}} (click)="changecategory(5)" [routerLink]="['/home/podcasts']">Podcasts</button>
+      <button class={{MyClass[6]}} (click)="changecategory(6)" [routerLink]="['/home/emissions']">Emissions</button>
+
+    </div>
+  </div>
+</body>
+
+
+
+    <div *ngIf="spotifysearch.typeSong; else singleColumnLayout" class="row">
+     <div class="col-3">
+      <app-player-song></app-player-song>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  
+  <ng-template #singleColumnLayout>
+    <div class="row">
+      <div class="col-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </ng-template>
+ 
+ 
+
+ 
+
+
+

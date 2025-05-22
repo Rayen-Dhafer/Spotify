@@ -1,0 +1,162 @@
+ 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+  
+  .tracklist-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #181818;
+  
+  }
+  
+  .tracklist-header {
+    display: grid;
+    grid-template-columns: 50px 3fr 2fr 1fr;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+    color: #ccc;
+  }
+  
+  .tracklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  
+  }
+  
+  .track {
+    display: grid;
+    grid-template-columns: 50px 3fr 2fr 1fr;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+  
+  }
+  
+  .track:hover {
+    background-color: #1c1c1c;
+  }
+  
+  .track-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .track-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+  
+  .track-title {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .track-artist {
+    font-size: 12px;
+    color: #ccc;
+    margin: 0;
+  }
+  
+  .track-album {
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  .track-duration {
+    font-size: 14px;
+    color: #bbb;
+  }
+   
+  
+  .play-buttont {
+    position: absolute;
+    margin-top: -12px;
+    margin-left: 12px;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: #1db954;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .track:hover .play-button ,.track:hover .play-buttont   {
+    opacity: 1;
+  }
+  
+  .play-button i, .play-buttont i, .play-buttonm i {
+    color: #2a2a2a;
+    font-size: 20px;
+  }
+  
+  
+  video{
+    position: relative;
+    left: 25%;
+    top:20%
+  }
+  
+  .background-container {
+    background-color: #121212;
+    height: 100vh; 
+    color: white; 
+  }
+
+  .playlist-header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+      to bottom right, 
+      rgba(29, 185, 84, 1),      /* Spotify green - solid */
+      rgba(23, 150, 68, 0.8),    /* Slightly darker green */
+      rgba(15, 105, 47, 0.6)
+    );
+        padding: 30px;
+    gap: 20px;
+    border-bottom: 2px solid #333;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .tracklist-header {
+      grid-template-columns: 50px 2fr 1.5fr 1fr;
+    }
+
+    .playlist-header {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .playlist-header img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .playlist-details h1 {
+      font-size: 2em;
+    }
+  }
+
+  .bi-trash{
+    position: relative;
+    left: 2800%;
+    opacity: 0.6;
+   }
+   .bi-trash:hover{
+    opacity: 1;
+   }

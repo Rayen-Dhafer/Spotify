@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+ 
+</head>
+
+ 
+
+
+
+ <body><br>
+  <div class="container"  *ngIf="spotifysearch.songs; else spotifyVide">
+    <br>
+    <h1 class="text-center my-4">Albums</h1>
+    <div class="artists-grid">
+
+
+      <div class="artist-item"   *ngFor="let item of spotifysearch.songs.albums.items">
+        <div (click)="select(item.data)">
+            <img   *ngIf="item.data.coverArt?.sources[0]?.url; else defaultImage" 
+                    [src]="item.data.coverArt.sources[0].url" />
+                
+                <ng-template #defaultImage>
+                    <img class="imgcir" src="default.jpg" />
+                </ng-template>
+
+                <div class="play-button"><i class="bi bi-play-fill"></i></div><br>
+                <span>{{ get3Words(item.data.name) }}</span>
+            </div>
+      </div>
+       
+ 
+    </div>
+  </div>
+
+  <ng-template #spotifyVide>
+    <div class="background-container">
+      <video class="convertationNull" autoplay muted loop >
+        <source src="spotifyVide.mp4" type="video/mp4" />
+       </video>  </div>
+  
+  </ng-template>
+
+  
+  <br><br><br>
+</body>
+ </html>

@@ -1,0 +1,63 @@
+ 
+<body>
+
+    <br>
+
+  <div class="tracklist-container"  *ngIf="spotifysearch.likedSongs; else spotifyVide">
+
+       <div class="playlist-header">
+         <div class="playlist-details">
+          <h1>Musiques aimés</h1>
+          <p>{{spotifysearch.likedSongs.length}} musiques</p>
+        </div>
+      </div>
+
+    <header class="tracklist-header">
+      <span>#</span>
+      <span>Title</span>
+      <span>Album</span>
+      <span>Heure</span>
+    </header>
+    <ul class="tracklist">
+ 
+ 
+      <li class="track" *ngFor="let item of spotifysearch.likedSongs; let i = index" (click)="select(item.track)">
+        <div class="track-left">
+          <!-- Delete icon -->
+          <i class="bi bi-trash" (click)="spotifysearch.deleteLike(item.track.id)"></i>
+          <span class="track-number">{{i + 1}}</span>
+          <div class="play-buttont"><i class="bi bi-play-fill"></i></div>
+        </div>
+      
+        <div class="track-info">
+          <img *ngIf="item.track.album?.images[0]?.url; else defaultImage" 
+               [src]="item.track.album?.images[0].url" />
+          <div>
+            <ng-template #defaultImage>
+              <img class="imgcir2" src="default.jpg" />
+            </ng-template>
+      
+            <p class="track-title">{{ getFirstTwoWords(item.track.album.name) }}</p>
+            <p class="track-artist">{{ item.track.artists[0].name }}</p>
+          </div>
+        </div>
+      
+        <span class="track-album">{{ getFirstTwoWords(item.track.name) }}</span>
+        <span class="track-duration">{{ formatDuration(item.track.duration_ms) }}</span>
+      </li>
+      
+ 
+    </ul>
+  </div>
+
+  <ng-template #spotifyVide>
+    <div class="background-container">
+      <video class="convertationNull" autoplay muted loop >
+        <source src="spotifyVide.mp4" type="video/mp4" />
+       </video>  </div>
+  
+  </ng-template>
+
+  <br><br><br>
+</body>
+ 

@@ -1,0 +1,56 @@
+ 
+<body>
+
+    <br>
+
+  <div class="tracklist-container"  *ngIf="spotifysearch.songs; else spotifyVide">
+
+    <br>
+    <h1 class="text-center my-4">Musiques</h1>
+
+    <header class="tracklist-header">
+      <span>#</span>
+      <span>Title</span>
+      <span>Album</span>
+      <span>Heure</span>
+    </header>
+    <ul class="tracklist">
+ 
+ 
+      <li class="track" *ngFor="let item of spotifysearch.songs.tracks.items; let i = index" (click)="select(item.data)">
+        <span class="track-number">{{i+1}}</span>
+        <div class="play-buttont"><i class="bi bi-play-fill"></i></div>
+
+        <div class="track-info">
+             <img    *ngIf="item.data.albumOfTrack?.coverArt?.sources[0]?.url; else defaultImage" 
+                    [src]="item.data.albumOfTrack.coverArt.sources[0].url" />
+          <div>
+
+            <ng-template #defaultImage>
+                <img class="imgcir2" src="default.jpg" />
+              </ng-template>
+
+            <p class="track-title">{{ getFirstTwoWords(item.data.albumOfTrack.name) }}</p>
+            <p class="track-artist">{{item.data.artists.items[0].profile.name}}</p>
+ 
+          </div>
+        </div>
+ 
+        <span class="track-album">{{ getFirstTwoWords(item.data.artists.items[0].profile.name) }}</span>
+        <span class="track-duration">{{ formatDuration(item.data.duration.totalMilliseconds) }}</span>
+      </li>
+ 
+    </ul>
+  </div>
+
+  <ng-template #spotifyVide>
+    <div class="background-container">
+      <video class="convertationNull" autoplay muted loop >
+        <source src="spotifyVide.mp4" type="video/mp4" />
+       </video>  </div>
+  
+  </ng-template>
+
+  <br><br><br>
+</body>
+ 
