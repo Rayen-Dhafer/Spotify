@@ -12,7 +12,7 @@ export class AuthentificationService {
  
   login() {
     const clientId = 'cbc15f0bc410411597198f7830392909'; // 75523c48fef24e2ea0a0378df08e93d5
-    const redirectUri = 'https://spotifytn.netlify.app/'; 
+    const redirectUri = 'https://spotifytn.netlify.app/home'; 
     const scopes = 'user-read-private user-read-email user-library-read user-top-read user-library-modify';
 
      
