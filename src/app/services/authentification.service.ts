@@ -16,7 +16,7 @@ export class AuthentificationService {
     const scopes = 'user-read-private user-read-email user-library-read user-top-read user-library-modify';
 
      
-    const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
+    const url = `https://accounts.spotify.com/authorize?response_type=token&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
     window.location.href = url;  
 
   }
