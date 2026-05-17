@@ -24,30 +24,23 @@ login() {
 
   const url =
     `https://accounts.spotify.com/authorize` +
-    `?response_type=token` +
+    `?response_type=code` +
     `&client_id=${clientId}` +
     `&redirect_uri=${encodeURIComponent(redirectUri)}` +
     `&scope=${encodeURIComponent(scopes)}`;
 
   window.location.href = url;
 }
+ 
+ 
 saveToken() {
-  const hash = window.location.hash;
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
 
-  if (!hash) return;
-
-  const params = new URLSearchParams(hash.replace('#', ''));
-  const accessToken = params.get('access_token');
-
-  if (accessToken) {
-    localStorage.setItem('accessToken', accessToken);
-
-    // IMPORTANT: clean URL
-    window.history.replaceState({}, document.title, '/home');
+  if (code) {
+    localStorage.setItem('spotify_code', code);
   }
 }
- 
-
  
 
   logout() {
